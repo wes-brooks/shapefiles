@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Inspect the 'Australia' polygon\nogrinfo -al -ro -where \"name='Australia'\" ne_50m_admin_0_countries.shp\n\n# Extract just the 'Australia' polygon\nogr2ogr -where \"name='Australia'\" aus.shp ne_50m_admin_0_countries.shp\n\n# Extract rivers within Australia, using spatial extents\nogr2ogr -spat 112.9 -55 159 -10.1 ausriv.shp ne_50m_rivers_lake_centerlines.shp\n\n",
+    "created" : 1459386756430.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "990165108",
+    "id" : "B8250A26",
+    "lastKnownWriteTime" : 1459388950,
+    "last_content_update" : 1459388950924,
+    "path" : "~/git/shapefiles/ogr.sh",
+    "project_path" : "ogr.sh",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "sh"
+}

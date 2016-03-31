@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(\"sp\")\nlibrary(\"rgdal\")\nlibrary(\"dplyr\")\n\n# read shapefile data\naus <- readOGR(\"data/ne_50m_admin_0_countries/aus.shp\", \"aus\")\nausriv <- readOGR(\"data/ne_50m_rivers_lake_centerlines/ausriv.shp\", \"ausriv\")\n\n# make the basic plot via leaflet\nlibrary(\"leaflet\")\n\nausleaf <- leaflet(aus) %>% addPolygons(\n  stroke = FALSE,\n  fillOpacity = 0.5,\n  smoothFactor = 0.5,\n  color = 'red'\n)\nausleaf\n\nausleaf %>% addPolylines(data=ausriv, weight=2)\n\n\n# make the basic plot via ggplot2\nlibrary(ggplot2)\n\n# convert shapes to data frames\naus.df <- fortify(aus)\nausriv.df <- fortify(ausriv)\n\nausplot <- ggplot(aus.df) +\n  aes(long, lat, group=group) +\n  geom_polygon(fill='red') +\n  coord_equal()\nausplot\n\n# show a new plot with rivers\nausplot + geom_line(data=ausriv.df, aes(long, lat, group=group))\n",
+    "created" : 1459384856176.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4055624355",
+    "id" : "63190FD9",
+    "lastKnownWriteTime" : 1459389484,
+    "last_content_update" : 1459389484158,
+    "path" : "~/git/shapefiles/R/shapes.R",
+    "project_path" : "R/shapes.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
